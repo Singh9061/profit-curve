@@ -12,26 +12,26 @@ const steps = [
 
 export function HowItWorksSection() {
   return (
-    <section id="process" className="bg-card/50 py-24 relative overflow-hidden">
+    <section id="process" className="bg-card/50 py-16 relative overflow-hidden sm:py-24">
       <motion.div
         animate={{ rotate: -360 }}
         transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-        className="absolute bottom-0 right-0 h-[600px] w-[600px] translate-x-1/3 translate-y-1/3 rounded-full bg-gradient-to-tl from-primary/5 to-transparent blur-[120px]"
+        className="absolute bottom-0 right-0 h-[300px] w-[300px] translate-x-1/3 translate-y-1/3 rounded-full bg-gradient-to-tl from-primary/5 to-transparent blur-[80px] sm:h-[600px] sm:w-[600px] sm:blur-[120px]"
       />
 
-      <div className="mx-auto max-w-7xl px-6 relative z-10">
+      <div className="mx-auto max-w-7xl px-4 relative z-10 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 50, rotateX: -20 }}
           whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, type: "spring" }}
-          className="text-center perspective-[1000px]"
+          className="text-center"
         >
           <motion.p 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-sm font-extrabold uppercase tracking-widest text-primary"
+            className="text-xs font-extrabold uppercase tracking-widest text-primary sm:text-sm"
           >
             Our Process
           </motion.p>
@@ -39,7 +39,7 @@ export function HowItWorksSection() {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
-            className="mt-4 text-4xl font-black text-foreground md:text-6xl"
+            className="mt-3 text-2xl font-black text-foreground sm:mt-4 sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
           >
             How We Work
           </motion.h2>
@@ -47,7 +47,7 @@ export function HowItWorksSection() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground"
+            className="mx-auto mt-4 max-w-xl text-sm text-muted-foreground sm:mt-6 sm:text-base lg:text-lg"
           >
             A streamlined process designed to deliver results quickly and efficiently.
           </motion.p>
@@ -64,7 +64,7 @@ export function HowItWorksSection() {
               transition: { staggerChildren: 0.2, delayChildren: 0.3 }
             }
           }}
-          className="mt-24 grid gap-8 md:grid-cols-2 lg:grid-cols-4"
+          className="mt-12 grid gap-4 sm:mt-16 sm:gap-6 md:grid-cols-2 lg:mt-24 lg:grid-cols-4 lg:gap-8"
         >
           {steps.map((step, i) => (
             <motion.div
@@ -78,7 +78,7 @@ export function HowItWorksSection() {
                 y: -20,
                 boxShadow: "0 25px 50px -12px rgba(var(--primary), 0.25)"
               }}
-              className="group relative rounded-3xl border border-border bg-card p-8 transition-all duration-300"
+              className="group relative rounded-2xl border border-border bg-card p-6 transition-all duration-300 sm:rounded-3xl sm:p-8"
             >
               {/* Connection line between steps (hidden on mobile) */}
               {i !== steps.length - 1 && (
@@ -92,24 +92,24 @@ export function HowItWorksSection() {
                 </div>
               )}
               
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:rounded-3xl" />
               
               <div className="relative z-10">
                 <motion.span 
                   whileHover={{ scale: 1.2, rotate: 10 }}
-                  className="inline-block text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-primary/30 to-primary/5"
+                  className="inline-block text-3xl font-black text-transparent bg-clip-text bg-gradient-to-br from-primary/30 to-primary/5 sm:text-4xl lg:text-5xl"
                 >
                   {step.num}
                 </motion.span>
                 <motion.div 
                   whileHover={{ rotate: 180 }}
                   transition={{ duration: 0.5 }}
-                  className="mt-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-tr from-primary to-primary/60 shadow-lg"
+                  className="mt-3 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-tr from-primary to-primary/60 shadow-lg sm:mt-4 sm:h-14 sm:w-14 sm:rounded-2xl"
                 >
-                  <step.icon className="h-7 w-7 text-primary-foreground" />
+                  <step.icon className="h-6 w-6 text-primary-foreground sm:h-7 sm:w-7" />
                 </motion.div>
-                <h3 className="mt-8 text-2xl font-bold text-foreground">{step.title}</h3>
-                <p className="mt-3 text-base text-muted-foreground leading-relaxed font-medium">{step.desc}</p>
+                <h3 className="mt-5 text-lg font-bold text-foreground sm:mt-8 sm:text-xl lg:text-2xl">{step.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed font-medium sm:mt-3 sm:text-base">{step.desc}</p>
               </div>
             </motion.div>
           ))}

@@ -67,13 +67,13 @@ function StatCard({
         damping: 14,
       }}
       whileHover={{ scale: 1.08, y: -8, transition: { type: "spring", stiffness: 300 } }}
-      className="group relative rounded-2xl bg-background/50 p-6 text-center backdrop-blur-sm shadow-[0_0_15px_rgba(0,0,0,0.05)] transition-all hover:shadow-[0_0_30px_oklch(0.55_0.18_155/0.2)]"
+      className="group relative rounded-2xl bg-background/50 p-4 text-center backdrop-blur-sm shadow-[0_0_15px_rgba(0,0,0,0.05)] transition-all hover:shadow-[0_0_30px_oklch(0.55_0.18_155/0.2)] sm:p-6"
     >
       {/* Hover gradient overlay */}
       <div className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-br from-primary/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
       {/* Animated number */}
-      <p className="bg-gradient-to-br from-primary to-primary/60 bg-clip-text text-4xl font-extrabold text-transparent md:text-6xl tabular-nums">
+      <p className="bg-gradient-to-br from-primary to-primary/60 bg-clip-text text-3xl font-extrabold text-transparent tabular-nums sm:text-4xl md:text-5xl lg:text-6xl">
         {display}
         {stat.suffix}
       </p>
@@ -83,7 +83,7 @@ function StatCard({
         initial={{ opacity: 0 }}
         animate={inView ? { opacity: 1 } : {}}
         transition={{ delay: index * 0.15 + 0.5, duration: 0.5 }}
-        className="mt-3 text-sm font-medium tracking-wide text-muted-foreground uppercase"
+        className="mt-2 text-xs font-medium tracking-wide text-muted-foreground uppercase sm:mt-3 sm:text-sm"
       >
         {stat.label}
       </motion.p>
@@ -94,7 +94,7 @@ function StatCard({
 // ─── Section ──────────────────────────────────────────────────────────────────
 export function StatsSection() {
   return (
-    <section className="relative overflow-hidden border-y border-border bg-card/50 py-16">
+    <section className="relative overflow-hidden border-y border-border bg-card/50 py-10 sm:py-16">
       {/* Background animated conic gradient */}
       <motion.div
         animate={{ rotate: 360 }}
@@ -102,7 +102,7 @@ export function StatsSection() {
         className="pointer-events-none absolute -left-1/2 -top-1/2 h-[200%] w-[200%] bg-[conic-gradient(from_90deg_at_50%_50%,#00000000_50%,rgba(14,165,233,0.05)_100%)]"
       />
 
-      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 md:grid-cols-4">
+      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 sm:gap-8 sm:px-6 md:grid-cols-4">
         {stats.map((stat, i) => (
           <StatCard key={stat.label} stat={stat} index={i} />
         ))}

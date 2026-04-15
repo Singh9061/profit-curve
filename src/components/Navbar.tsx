@@ -25,15 +25,15 @@ export function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a href="/" className="flex items-center gap-3">
-          <img src="/images/logo.jpeg" alt="Profit Curve Logo" className="h-10 w-10 rounded-lg object-cover" />
-          <span className="text-xl font-bold tracking-tight text-foreground">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
+        <a href="/" className="flex items-center gap-2 sm:gap-3">
+          <img src="/images/logo.jpeg" alt="Profit Curve Logo" className="h-8 w-8 rounded-lg object-cover sm:h-10 sm:w-10" />
+          <span className="text-lg font-bold tracking-tight text-foreground sm:text-xl">
             Profit Curve
           </span>
         </a>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 lg:flex xl:gap-8">
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -46,7 +46,7 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-3 lg:flex">
           <a
             href="https://wa.me/918005150056"
             target="_blank"
@@ -68,7 +68,7 @@ export function Navbar() {
           <a
             href="#contact"
             onClick={(e) => handleNavClick(e, "#contact")}
-            className="flex items-center gap-2 rounded-full border border-primary bg-transparent px-5 py-2.5 text-sm font-semibold text-primary transition-all hover:bg-primary hover:text-primary-foreground"
+            className="flex items-center gap-2 rounded-full border border-primary bg-transparent px-4 py-2 text-sm font-semibold text-primary transition-all hover:bg-primary hover:text-primary-foreground xl:px-5 xl:py-2.5"
           >
             <Phone className="h-4 w-4" />
             Book Appointment
@@ -77,7 +77,7 @@ export function Navbar() {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="text-foreground md:hidden"
+          className="text-foreground lg:hidden"
         >
           {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
@@ -89,9 +89,9 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="border-t border-border/50 bg-background md:hidden"
+            className="border-t border-border/50 bg-background lg:hidden"
           >
-            <div className="flex flex-col gap-4 px-6 py-6">
+            <div className="flex flex-col gap-4 px-4 py-6 sm:px-6">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
