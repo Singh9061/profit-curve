@@ -1,17 +1,28 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist/client",
-  "framework": null,
   "functions": {
-    "dist/server/index.js": {
-      "runtime": "nodejs22.x",
-      "memory": 512
+    "api/index.js": {
+      "runtime": "nodejs20.x",
+      "maxDuration": 30
     }
   },
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/dist/server/index.js"
+      "src": "^/assets/(.+)$",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "^/images/(.+)$",
+      "dest": "/images/$1"
+    },
+    {
+      "src": "^/(.+\\.(ico|png|jpg|jpeg|svg|gif|webp|woff|woff2|ttf|otf|eot|css|js|map|json))$",
+      "dest": "/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.js"
     }
   ]
 }
