@@ -6,4 +6,8 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-export default defineConfig();
+export default defineConfig({
+  // Disable Cloudflare Workers adapter so the build produces a standard
+  // Node.js server that Vercel can run as a serverless function.
+  cloudflare: false,
+});

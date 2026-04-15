@@ -1,0 +1,17 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/client",
+  "framework": null,
+  "functions": {
+    "dist/server/index.js": {
+      "runtime": "nodejs22.x",
+      "memory": 512
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/dist/server/index.js"
+    }
+  ]
+}
