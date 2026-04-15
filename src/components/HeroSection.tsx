@@ -1,6 +1,7 @@
+"use client";
+
 import { motion } from "framer-motion";
-import { ArrowRight, Phone, Bot } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
 
 function AnimatedWord({ text, delayStart = 0 }: { text: string; delayStart?: number }) {
   return (
@@ -101,14 +102,14 @@ export function HeroSection() {
             Chat on WhatsApp
             <ArrowRight className="h-5 w-5" />
           </a>
-          <Link
-            to="/book"
+          <a
+            href="#contact"
+            onClick={(e) => { e.preventDefault(); document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" }); }}
             className="inline-flex items-center gap-2 rounded-full border border-primary bg-transparent px-8 py-4 text-base font-semibold text-primary transition-all hover:bg-primary hover:text-primary-foreground hover:scale-105"
           >
-            <Bot className="h-5 w-5" />
             Book Appointment
             <ArrowRight className="h-5 w-5" />
-          </Link>
+          </a>
         </motion.div>
 
         <motion.div

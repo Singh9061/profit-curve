@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
@@ -65,7 +67,7 @@ function StatCard({
         damping: 14,
       }}
       whileHover={{ scale: 1.08, y: -8, transition: { type: "spring", stiffness: 300 } }}
-      className="group relative rounded-2xl bg-background/50 p-6 text-center backdrop-blur-sm shadow-[0_0_15px_rgba(0,0,0,0.05)] transition-all hover:shadow-[0_0_30px_rgba(14,165,233,0.2)]"
+      className="group relative rounded-2xl bg-background/50 p-6 text-center backdrop-blur-sm shadow-[0_0_15px_rgba(0,0,0,0.05)] transition-all hover:shadow-[0_0_30px_oklch(0.55_0.18_155/0.2)]"
     >
       {/* Hover gradient overlay */}
       <div className="absolute inset-0 -z-10 rounded-2xl bg-gradient-to-br from-primary/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />

@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+"use client";
+
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
 import { StatsSection } from "@/components/StatsSection";
@@ -9,19 +10,7 @@ import { CTASection } from "@/components/CTASection";
 import { ContactSection } from "@/components/ContactSection";
 import { FooterSection } from "@/components/FooterSection";
 
-export const Route = createFileRoute("/")({
-  component: Index,
-  head: () => ({
-    meta: [
-      { title: "Profit Curve | AI Automation Agency - Grow Your Business with AI" },
-      { name: "description", content: "Supercharge your business with Profit Curve. We help businesses automate workflows, reduce costs, and scale faster with custom AI solutions that work 24/7." },
-      { property: "og:title", content: "Profit Curve | AI Automation Agency - Grow Your Business with AI" },
-      { property: "og:description", content: "We help businesses automate workflows, reduce costs, and scale faster with custom AI solutions." },
-    ],
-  }),
-});
-
-function Index() {
+export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />

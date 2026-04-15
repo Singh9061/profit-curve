@@ -1,9 +1,11 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { ArrowRight, Phone } from "lucide-react";
 
 export function CTASection() {
   return (
-    <section id="contact" className="relative overflow-hidden py-24 perspective-[1000px]">
+    <section id="cta" className="relative overflow-hidden py-24">
       <div className="pointer-events-none absolute inset-0">
         <motion.div 
           animate={{ rotate: 360, scale: [1, 1.2, 1] }}

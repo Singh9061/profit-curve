@@ -1,10 +1,11 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 const serviceLinks = ["AI Automation", "Web Development", "SEO", "Social Media Marketing"];
 const companyLinks = ["About Us", "Our Process", "Case Studies", "Contact"];
 const legalLinks = ["Privacy Policy", "Terms of Service"];
-
-import { motion } from "framer-motion";
 
 export function FooterSection() {
   return (
@@ -39,7 +40,7 @@ export function FooterSection() {
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">
                 <Mail className="h-4 w-4 text-primary" />
               </div>
-              <span className="group-hover:text-foreground transition-colors">theprofitcurve@gmai.com</span>
+              <span className="group-hover:text-foreground transition-colors">theprofitcurve@gmail.com</span>
             </li>
             <li className="flex items-center gap-4 text-sm text-muted-foreground group">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 transition-colors group-hover:bg-primary/20">

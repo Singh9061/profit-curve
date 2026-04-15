@@ -1,5 +1,7 @@
+"use client";
+
 import { motion } from "framer-motion";
-import { Bot, Code2, Smartphone, Search, Megaphone, Globe, ShieldCheck } from "lucide-react";
+import { Bot, Code2, Smartphone, Search, Megaphone, Globe } from "lucide-react";
 
 const services = [
   {

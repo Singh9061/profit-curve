@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { PhoneCall, ClipboardList, Code2, Rocket } from "lucide-react";
 
