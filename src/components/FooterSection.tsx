@@ -3,9 +3,24 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin } from "lucide-react";
 
-const serviceLinks = ["AI Automation", "Web Development", "SEO", "Social Media Marketing"];
-const companyLinks = ["About Us", "Our Process", "Case Studies", "Contact"];
-const legalLinks = ["Privacy Policy", "Terms of Service"];
+const serviceLinks = [
+  { label: "Social Media Handling", href: "#services" },
+  { label: "SEO Optimisation", href: "#services" },
+  { label: "Google Business Listing", href: "#services" },
+  { label: "Web Development", href: "#services" },
+  { label: "App Development", href: "#services" },
+  { label: "Website Maintenance", href: "#services" },
+];
+const companyLinks = [
+  { label: "About Us", href: "/about-us" },
+  { label: "Our Process", href: "/our-process" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "Contact", href: "#contact" },
+];
+const legalLinks = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms of Service", href: "/terms-of-service" },
+];
 
 export function FooterSection() {
   return (
@@ -33,7 +48,7 @@ export function FooterSection() {
             <h3 className="text-xl font-black text-foreground tracking-tight sm:text-2xl">Profit Curve</h3>
           </div>
           <p className="mt-4 text-sm text-muted-foreground leading-relaxed sm:mt-6 sm:text-base">
-            Empowering businesses with AI automation solutions that drive growth and efficiency.
+            Empowering businesses with digital solutions that drive growth and efficiency.
           </p>
           <ul className="mt-6 space-y-3 sm:mt-8 sm:space-y-4">
             <li className="flex items-center gap-3 text-sm text-muted-foreground group sm:gap-4">
@@ -60,11 +75,11 @@ export function FooterSection() {
         <motion.div variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}>
           <h4 className="text-base font-bold text-foreground sm:text-lg">Services</h4>
           <ul className="mt-4 space-y-2 sm:mt-6 sm:space-y-3">
-            {serviceLinks.map((l) => (
-              <li key={l}>
-                <a href="#services" className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+            {serviceLinks.map((link) => (
+              <li key={link.label}>
+                <a href={link.href} className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                   <span className="h-px w-0 bg-primary transition-all duration-300 group-hover:w-4" />
-                  {l}
+                  {link.label}
                 </a>
               </li>
             ))}
@@ -74,11 +89,11 @@ export function FooterSection() {
         <motion.div variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}>
           <h4 className="text-base font-bold text-foreground sm:text-lg">Company</h4>
           <ul className="mt-4 space-y-2 sm:mt-6 sm:space-y-3">
-            {companyLinks.map((l) => (
-              <li key={l}>
-                <a href="#" className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+            {companyLinks.map((link) => (
+              <li key={link.label}>
+                <a href={link.href} className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                   <span className="h-px w-0 bg-primary transition-all duration-300 group-hover:w-4" />
-                  {l}
+                  {link.label}
                 </a>
               </li>
             ))}
@@ -88,11 +103,11 @@ export function FooterSection() {
         <motion.div variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}>
           <h4 className="text-base font-bold text-foreground sm:text-lg">Legal</h4>
           <ul className="mt-4 space-y-2 sm:mt-6 sm:space-y-3">
-            {legalLinks.map((l) => (
-              <li key={l}>
-                <a href="#" className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+            {legalLinks.map((link) => (
+              <li key={link.label}>
+                <a href={link.href} className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                   <span className="h-px w-0 bg-primary transition-all duration-300 group-hover:w-4" />
-                  {l}
+                  {link.label}
                 </a>
               </li>
             ))}

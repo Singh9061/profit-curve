@@ -43,8 +43,10 @@ export function ContactSection() {
           transition={{ duration: 0.8 }}
           className="mx-auto max-w-2xl text-center"
         >
-          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl" style={{ fontFamily: "'Fredoka', 'Baloo 2', cursive, sans-serif" }}>Get in Touch</h2>
-          <p className="mt-3 text-sm leading-7 text-muted-foreground sm:mt-4 sm:text-base lg:text-lg">
+          <h2 className="text-2xl font-bold tracking-tight text-cyan-300 drop-shadow-[0_0_20px_rgba(34,211,238,0.8)] sm:text-3xl lg:text-4xl" style={{ fontFamily: "'Fredoka', 'Baloo 2', cursive, sans-serif" }}>
+            Get in Touch
+          </h2>
+          <p className="mt-3 text-sm leading-7 text-cyan-100 sm:mt-4 sm:text-base lg:text-lg">
             Ready to supercharge your business? Fill out the form and we&apos;ll reply on WhatsApp instantly.
           </p>
         </motion.div>
@@ -77,7 +79,7 @@ export function ContactSection() {
           ) : (
             <form
               onSubmit={handleSubmit}
-              className="group relative rounded-2xl bg-card p-6 shadow-2xl ring-1 ring-border sm:rounded-3xl sm:p-8 lg:p-10"
+              className="group relative rounded-2xl bg-slate-950/95 p-6 shadow-[0_0_60px_rgba(34,211,238,0.15)] ring-1 ring-cyan-400/20 sm:rounded-3xl sm:p-8 lg:p-10"
             >
               <div className="absolute -inset-0.5 -z-10 rounded-2xl bg-gradient-to-r from-primary to-[oklch(0.6_0.15_140)] opacity-20 blur transition duration-500 group-hover:opacity-40 sm:rounded-3xl" />
 
@@ -98,7 +100,7 @@ export function ContactSection() {
                       value={form.name}
                       onChange={handleChange}
                       autoComplete="name"
-                      className="block w-full rounded-md border-0 bg-background/50 py-2 pl-9 pr-3 text-sm text-foreground shadow-sm ring-1 ring-inset ring-border transition-all focus:ring-2 focus:ring-inset focus:ring-primary sm:pl-10 sm:pr-3.5 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 bg-white/95 py-2 pl-9 pr-3 text-sm text-slate-950 placeholder:text-muted-foreground shadow-sm ring-1 ring-inset ring-slate-300 transition-all focus:bg-white focus:text-slate-950 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:pl-10 sm:pr-3.5 sm:text-sm sm:leading-6"
                       placeholder="John Doe"
                     />
                   </div>
@@ -119,7 +121,7 @@ export function ContactSection() {
                       value={form.email}
                       onChange={handleChange}
                       autoComplete="email"
-                      className="block w-full rounded-md border-0 bg-background/50 py-2 pl-9 pr-3 text-sm text-foreground shadow-sm ring-1 ring-inset ring-border transition-all focus:ring-2 focus:ring-inset focus:ring-primary sm:pl-10 sm:pr-3.5 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 bg-white/95 py-2 pl-9 pr-3 text-sm text-slate-950 placeholder:text-muted-foreground shadow-sm ring-1 ring-inset ring-slate-300 transition-all focus:bg-white focus:text-slate-950 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:pl-10 sm:pr-3.5 sm:text-sm sm:leading-6"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -141,7 +143,7 @@ export function ContactSection() {
                       value={form.phone}
                       onChange={handleChange}
                       autoComplete="tel"
-                      className="block w-full rounded-md border-0 bg-background/50 py-2 pl-9 pr-3 text-sm text-foreground shadow-sm ring-1 ring-inset ring-border transition-all focus:ring-2 focus:ring-inset focus:ring-primary sm:pl-10 sm:pr-3.5 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 bg-white/95 py-2 pl-9 pr-3 text-sm text-slate-950 placeholder:text-muted-foreground shadow-sm ring-1 ring-inset ring-slate-300 transition-all focus:bg-white focus:text-slate-950 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:pl-10 sm:pr-3.5 sm:text-sm sm:leading-6"
                       placeholder="+91 80051-50056"
                     />
                   </div>
@@ -161,7 +163,7 @@ export function ContactSection() {
                       rows={4}
                       value={form.message}
                       onChange={handleChange}
-                      className="block w-full rounded-md border-0 bg-background/50 py-2 pl-9 pr-3 text-sm text-foreground shadow-sm ring-1 ring-inset ring-border transition-all focus:ring-2 focus:ring-inset focus:ring-primary sm:pl-10 sm:pr-3.5 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 bg-white/95 py-2 pl-9 pr-3 text-sm text-slate-950 placeholder:text-muted-foreground shadow-sm ring-1 ring-inset ring-slate-300 transition-all focus:bg-white focus:text-slate-950 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:pl-10 sm:pr-3.5 sm:text-sm sm:leading-6"
                       placeholder="Tell us about your project..."
                     />
                   </div>

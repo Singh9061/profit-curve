@@ -1,38 +1,38 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Bot, Code2, Smartphone, Search, Megaphone, Globe } from "lucide-react";
+import { Share2, Search, MapPin, Code2, Smartphone, Globe } from "lucide-react";
 
 const services = [
   {
-    icon: Megaphone,
-    title: "Digital Marketing",
-    desc: "Grow your business with targeted online marketing strategies."
+    icon: Share2,
+    title: "Social Media Handling",
+    desc: "Grow your brand with engaging social media campaigns and audience management."
   },
   {
     icon: Search,
-    title: "SEO Optimization",
-    desc: "Improve your website ranking and visibility on search engines."
+    title: "SEO Optimisation",
+    desc: "Increase search visibility and organic traffic with proven SEO strategies."
+  },
+  {
+    icon: MapPin,
+    title: "Google Business Listing",
+    desc: "Maximize local discovery and customer trust with an optimized Google Business profile."
   },
   {
     icon: Code2,
     title: "Web Development",
-    desc: "Build fast, modern, and scalable websites tailored to your business."
+    desc: "Build fast, responsive websites that convert visitors into customers."
   },
   {
     icon: Smartphone,
     title: "App Development",
-    desc: "Create powerful mobile apps for Android and iOS platforms."
-  },
-  {
-    icon: Bot,
-    title: "AI Automation",
-    desc: "Automate repetitive tasks with intelligent AI solutions to boost productivity."
+    desc: "Launch mobile experiences for Android and iOS that delight users."
   },
   {
     icon: Globe,
     title: "Website Maintenance",
-    desc: "Keep your website secure, updated, and running smoothly at all times."
+    desc: "Keep your site secure, updated and performing perfectly around the clock."
   },
 ];
 
@@ -60,7 +60,7 @@ export function ServicesSection() {
             transition={{ delay: 0.2 }}
             className="text-xs font-bold uppercase tracking-[0.2em] text-primary sm:text-sm sm:tracking-[0.3em]"
           >
-            What We Do
+            Our Services
           </motion.p>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -68,7 +68,7 @@ export function ServicesSection() {
             transition={{ delay: 0.4 }}
             className="mt-3 text-2xl font-extrabold tracking-tight text-foreground sm:mt-4 sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
           >
-            Services That Accelerate Your Growth
+            Digital Growth Services for Your Business
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0 }}
@@ -76,7 +76,7 @@ export function ServicesSection() {
             transition={{ delay: 0.6 }}
             className="mx-auto mt-4 max-w-2xl text-sm text-muted-foreground sm:mt-6 sm:text-base lg:text-lg"
           >
-            We help businesses scale faster with innovative and future ready solutions.
+            We deliver performance-first digital solutions that increase traffic, leads, and conversions.
           </motion.p>
         </motion.div>
 

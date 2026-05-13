@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 function AnimatedWord({ text, delayStart = 0 }: { text: string; delayStart?: number }) {
   return (
@@ -83,7 +84,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mx-auto mt-4 max-w-2xl px-2 text-base text-muted-foreground sm:mt-6 sm:text-lg md:text-xl"
         >
-          We help businesses automate workflows, reduce costs, and scale faster with custom AI solutions that work 24/7.
+          We help businesses automate workflows, reduce costs, and scale faster with custom solutions that work 24/7.
         </motion.p>
 
         <motion.div
@@ -102,14 +103,16 @@ export function HeroSection() {
             Chat on WhatsApp
             <ArrowRight className="h-5 w-5" />
           </a>
-          <a
+          <motion.a
+            whileHover={{ scale: 1.05, y: -5 }}
+            whileTap={{ scale: 0.95 }}
             href="#contact"
             onClick={(e) => { e.preventDefault(); document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" }); }}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-primary bg-transparent px-6 py-3 text-sm font-semibold text-primary transition-all hover:bg-primary hover:text-primary-foreground hover:scale-105 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-primary bg-transparent px-6 py-3 text-sm font-semibold text-primary transition-all hover:bg-primary hover:text-primary-foreground sm:w-auto sm:px-8 sm:py-4 sm:text-base"
           >
             Book Appointment
             <ArrowRight className="h-5 w-5" />
-          </a>
+          </motion.a>
         </motion.div>
 
         <motion.div

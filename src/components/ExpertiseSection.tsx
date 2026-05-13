@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { CheckCircle2, Mail } from "lucide-react";
 
 const features = [
-  "Custom AI solutions tailored to your needs",
+  "Custom solutions tailored to your needs",
   "24/7 automated systems working for you",
   "Seamless integration with existing tools",
   "Dedicated support and maintenance",
@@ -15,14 +15,16 @@ const features = [
 const team = [
   {
     name: "Vashishtha Yadav",
-    role: "Founder-theraebarelian",
+    role: "Founder",
     email: "vashishthayadav1@gmail.com",
+    instagram: "https://www.instagram.com/shiv_vashishtha_?igsh=MWd5anlodmxyYnh6NA==",
     image: "/images/cofounder.jpg",
   },
   {
     name: "Devesh Singh Chauhan",
     role: "Co-Founder",
     email: "deveshkv04@gmail.com",
+    instagram: "https://www.instagram.com/devx.esh?igsh=c2d3OGJwMjVyenBu",
     image: "/images/founder.jpg",
   },
 ];
@@ -97,13 +99,28 @@ export function ExpertiseSection() {
                   </motion.div>
                   <h3 className="mt-4 text-lg font-black text-foreground sm:mt-6 sm:text-2xl">{member.name}</h3>
                   <p className="mt-1 text-xs font-bold tracking-wide text-primary sm:text-sm">{member.role}</p>
-                  <a
-                    href={`mailto:${member.email}`}
-                    className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1.5 text-[10px] font-semibold text-primary transition-all hover:bg-primary hover:text-primary-foreground sm:mt-4 sm:gap-2 sm:px-4 sm:py-2 sm:text-xs"
-                  >
-                    <Mail className="h-3 w-3 sm:h-4 sm:w-4" />
-                    <span className="truncate max-w-[140px] sm:max-w-none">{member.email}</span>
-                  </a>
+                  <div className="mt-3 flex flex-col items-center justify-center gap-2 sm:mt-4 sm:flex-row">
+                    <a
+                      href={`mailto:${member.email}`}
+                      className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1.5 text-[10px] font-semibold text-primary transition-all hover:bg-primary hover:text-primary-foreground sm:gap-2 sm:px-4 sm:py-2 sm:text-xs"
+                    >
+                      <Mail className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                      <span className="truncate max-w-[140px] sm:max-w-none">{member.email}</span>
+                    </a>
+                    {member.instagram && (
+                      <a
+                        href={member.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-foreground/10 px-3 py-1.5 text-[10px] font-semibold text-foreground transition-all hover:bg-foreground hover:text-background sm:gap-2 sm:px-4 sm:py-2 sm:text-xs"
+                      >
+                        <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 sm:h-4 sm:w-4 fill-current">
+                          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                        </svg>
+                        <span>Instagram</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             ))}

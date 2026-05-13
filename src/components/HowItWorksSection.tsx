@@ -6,7 +6,7 @@ import { PhoneCall, ClipboardList, Code2, Rocket } from "lucide-react";
 const steps = [
   { icon: PhoneCall, num: "01", title: "Discovery Call", desc: "We start with a free consultation to understand your business, challenges, and goals." },
   { icon: ClipboardList, num: "02", title: "Strategy & Planning", desc: "Our team designs a custom solution blueprint tailored specifically to your needs." },
-  { icon: Code2, num: "03", title: "Development", desc: "We build and test your AI automation systems with precision and care." },
+  { icon: Code2, num: "03", title: "Development", desc: "We build and test your digital systems with precision and care." },
   { icon: Rocket, num: "04", title: "Launch & Support", desc: "Deploy your solution and enjoy ongoing support to ensure optimal performance." },
 ];
 
