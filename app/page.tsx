@@ -10,9 +10,11 @@ import { HowItWorksSection } from "@/components/HowItWorksSection";
 import { CTASection } from "@/components/CTASection";
 import { ContactSection } from "@/components/ContactSection";
 import { FooterSection } from "@/components/FooterSection";
+import { SplashScreen } from "@/components/SplashScreen";
 
 export default function HomePage() {
   const [mounted, setMounted] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
     setMounted(true);
@@ -23,16 +25,26 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Navbar />
-      <HeroSection />
-      <StatsSection />
-      <ServicesSection />
-      <ExpertiseSection />
-      <HowItWorksSection />
-      <CTASection />
-      <ContactSection />
-      <FooterSection />
-    </div>
+    <>
+      {showSplash && (
+        <SplashScreen onComplete={() => setShowSplash(false)} />
+      )}
+
+      <div
+        className={`min-h-screen bg-background text-foreground transition-opacity duration-500 ${
+          showSplash ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        <Navbar />
+        <HeroSection />
+        <StatsSection />
+        <ServicesSection />
+        <ExpertiseSection />
+        <HowItWorksSection />
+        <CTASection />
+        <ContactSection />
+        <FooterSection />
+      </div>
+    </>
   );
 }
