@@ -11,6 +11,7 @@ import { CTASection } from "@/components/CTASection";
 import { ContactSection } from "@/components/ContactSection";
 import { FooterSection } from "@/components/FooterSection";
 import { SplashScreen } from "@/components/SplashScreen";
+import { CustomCursor } from "@/components/CustomCursor";
 
 export default function HomePage() {
   const [mounted, setMounted] = useState(false);
@@ -26,6 +27,8 @@ export default function HomePage() {
 
   return (
     <>
+      <CustomCursor />
+
       {showSplash && (
         <SplashScreen onComplete={() => setShowSplash(false)} />
       )}
