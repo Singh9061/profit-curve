@@ -16,7 +16,6 @@ export function ContactSection() {
     e.preventDefault();
     const { name, email, phone, message } = form;
 
-    // Build a WhatsApp message from the form data
     const text = [
       `*New Inquiry from Profit Curve Website* 🚀`,
       ``,
@@ -43,11 +42,15 @@ export function ContactSection() {
           transition={{ duration: 0.8 }}
           className="mx-auto max-w-2xl text-center"
         >
-          <h2 className="text-2xl font-bold tracking-tight text-cyan-300 drop-shadow-[0_0_20px_rgba(34,211,238,0.8)] sm:text-3xl lg:text-4xl" style={{ fontFamily: "'Fredoka', 'Baloo 2', cursive, sans-serif" }}>
+          <h2
+            className="text-2xl font-bold tracking-tight text-cyan-300 drop-shadow-[0_0_20px_rgba(34,211,238,0.8)] sm:text-3xl lg:text-4xl"
+            style={{ fontFamily: "'Fredoka', 'Baloo 2', cursive, sans-serif" }}
+          >
             Get in Touch
           </h2>
           <p className="mt-3 text-sm leading-7 text-cyan-100 sm:mt-4 sm:text-base lg:text-lg">
-            Ready to supercharge your business? Fill out the form and we&apos;ll reply on WhatsApp instantly.
+            Ready to supercharge your business? Fill out the form and we&apos;ll reply on WhatsApp
+            instantly.
           </p>
         </motion.div>
 
@@ -70,7 +73,10 @@ export function ContactSection() {
                 WhatsApp pe humara message chala gaya hai. Humari team jaldi reply karegi!
               </p>
               <button
-                onClick={() => { setSubmitted(false); setForm({ name: "", email: "", phone: "", message: "" }); }}
+                onClick={() => {
+                  setSubmitted(false);
+                  setForm({ name: "", email: "", phone: "", message: "" });
+                }}
                 className="mt-3 rounded-full border border-primary px-5 py-2 text-sm font-semibold text-primary transition-all hover:bg-primary hover:text-primary-foreground sm:mt-4 sm:px-6 sm:py-2.5"
               >
                 Send Another Message
@@ -85,7 +91,10 @@ export function ContactSection() {
 
               <div className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-6">
                 <div className="sm:col-span-2">
-                  <label htmlFor="name" className="block text-sm font-semibold leading-6 text-foreground">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-semibold leading-6 text-foreground"
+                  >
                     Name <span className="text-primary">*</span>
                   </label>
                   <div className="relative mt-2">
@@ -100,14 +109,17 @@ export function ContactSection() {
                       value={form.name}
                       onChange={handleChange}
                       autoComplete="name"
-                      className="block w-full rounded-md border-0 bg-white/95 py-2 pl-9 pr-3 text-sm text-slate-950 placeholder:text-muted-foreground shadow-sm ring-1 ring-inset ring-slate-300 transition-all focus:bg-white focus:text-slate-950 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:pl-10 sm:pr-3.5 sm:text-sm sm:leading-6"
-                      placeholder="John Doe"
+                      className="block w-full rounded-md border-0 bg-white/95 py-2 pl-9 pr-3 text-sm text-slate-950 shadow-sm ring-1 ring-inset ring-slate-300 transition-all placeholder:text-muted-foreground focus:bg-white focus:text-slate-950 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:pl-10 sm:pr-3.5 sm:text-sm sm:leading-6"
+                      placeholder="Vashishtha"
                     />
                   </div>
                 </div>
 
                 <div className="sm:col-span-1">
-                  <label htmlFor="email" className="block text-sm font-semibold leading-6 text-foreground">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-semibold leading-6 text-foreground"
+                  >
                     Email
                   </label>
                   <div className="relative mt-2">
@@ -121,14 +133,17 @@ export function ContactSection() {
                       value={form.email}
                       onChange={handleChange}
                       autoComplete="email"
-                      className="block w-full rounded-md border-0 bg-white/95 py-2 pl-9 pr-3 text-sm text-slate-950 placeholder:text-muted-foreground shadow-sm ring-1 ring-inset ring-slate-300 transition-all focus:bg-white focus:text-slate-950 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:pl-10 sm:pr-3.5 sm:text-sm sm:leading-6"
-                      placeholder="john@example.com"
+                      className="block w-full rounded-md border-0 bg-white/95 py-2 pl-9 pr-3 text-sm text-slate-950 shadow-sm ring-1 ring-inset ring-slate-300 transition-all placeholder:text-muted-foreground focus:bg-white focus:text-slate-950 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:pl-10 sm:pr-3.5 sm:text-sm sm:leading-6"
+                      placeholder="vashishtha@example.com"
                     />
                   </div>
                 </div>
 
                 <div className="sm:col-span-1">
-                  <label htmlFor="phone" className="block text-sm font-semibold leading-6 text-foreground">
+                  <label
+                    htmlFor="phone"
+                    className="block text-sm font-semibold leading-6 text-foreground"
+                  >
                     Phone <span className="text-primary">*</span>
                   </label>
                   <div className="relative mt-2">
@@ -143,18 +158,21 @@ export function ContactSection() {
                       value={form.phone}
                       onChange={handleChange}
                       autoComplete="tel"
-                      className="block w-full rounded-md border-0 bg-white/95 py-2 pl-9 pr-3 text-sm text-slate-950 placeholder:text-muted-foreground shadow-sm ring-1 ring-inset ring-slate-300 transition-all focus:bg-white focus:text-slate-950 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:pl-10 sm:pr-3.5 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 bg-white/95 py-2 pl-9 pr-3 text-sm text-slate-950 shadow-sm ring-1 ring-inset ring-slate-300 transition-all placeholder:text-muted-foreground focus:bg-white focus:text-slate-950 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:pl-10 sm:pr-3.5 sm:text-sm sm:leading-6"
                       placeholder="+91 80051-50056"
                     />
                   </div>
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label htmlFor="message" className="block text-sm font-semibold leading-6 text-foreground">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-semibold leading-6 text-foreground"
+                  >
                     Message
                   </label>
                   <div className="relative mt-2">
-                    <div className="pointer-events-none absolute top-3 left-3 flex items-start">
+                    <div className="pointer-events-none absolute left-3 top-3 flex items-start">
                       <MessageSquare className="h-4 w-4 text-muted-foreground sm:h-5 sm:w-5" />
                     </div>
                     <textarea
@@ -163,7 +181,7 @@ export function ContactSection() {
                       rows={4}
                       value={form.message}
                       onChange={handleChange}
-                      className="block w-full rounded-md border-0 bg-white/95 py-2 pl-9 pr-3 text-sm text-slate-950 placeholder:text-muted-foreground shadow-sm ring-1 ring-inset ring-slate-300 transition-all focus:bg-white focus:text-slate-950 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:pl-10 sm:pr-3.5 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 bg-white/95 py-2 pl-9 pr-3 text-sm text-slate-950 shadow-sm ring-1 ring-inset ring-slate-300 transition-all placeholder:text-muted-foreground focus:bg-white focus:text-slate-950 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:pl-10 sm:pr-3.5 sm:text-sm sm:leading-6"
                       placeholder="Tell us about your project..."
                     />
                   </div>
