@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, User, Mail, MessageSquare, Phone, CheckCircle2 } from "lucide-react";
+import { AuroraBackground } from "./AuroraBackground";
 
 export function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
@@ -32,23 +33,34 @@ export function ContactSection() {
     setSubmitted(true);
   };
 
+  const inputClass =
+    "block w-full rounded-xl border-0 bg-background/80 py-2.5 pl-10 pr-4 text-sm text-foreground shadow-sm ring-1 ring-inset ring-border transition-all placeholder:text-muted-foreground/60 focus:bg-background focus:ring-2 focus:ring-inset focus:ring-primary sm:pl-11 sm:text-sm";
+
   return (
-    <section className="relative overflow-hidden bg-background py-16 sm:py-24 lg:py-32" id="contact">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section
+      id="contact"
+      className="relative overflow-hidden bg-background py-16 sm:py-24 lg:py-32"
+    >
+      <AuroraBackground />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7 }}
           className="mx-auto max-w-2xl text-center"
         >
+          <p className="text-xs font-extrabold uppercase tracking-widest text-primary sm:text-sm">
+            Contact
+          </p>
           <h2
-            className="text-2xl font-bold tracking-tight text-cyan-300 drop-shadow-[0_0_20px_rgba(34,211,238,0.8)] sm:text-3xl lg:text-4xl"
+            className="mt-3 text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl xl:text-5xl"
             style={{ fontFamily: "'Fredoka', 'Baloo 2', cursive, sans-serif" }}
           >
             Get in Touch
           </h2>
-          <p className="mt-3 text-sm leading-7 text-cyan-100 sm:mt-4 sm:text-base lg:text-lg">
+          <p className="mt-3 text-sm leading-7 text-muted-foreground sm:mt-4 sm:text-base lg:text-lg">
             Ready to supercharge your business? Fill out the form and we&apos;ll reply on WhatsApp
             instantly.
           </p>
@@ -58,14 +70,14 @@ export function ContactSection() {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mx-auto mt-10 max-w-xl sm:mt-16 lg:mt-20"
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="mx-auto mt-10 max-w-xl sm:mt-14 lg:mt-16"
         >
           {submitted ? (
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="flex flex-col items-center justify-center gap-3 rounded-2xl bg-card p-8 text-center shadow-2xl ring-1 ring-border sm:gap-4 sm:rounded-3xl sm:p-12"
+              className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-border/60 bg-card/80 p-8 text-center shadow-2xl backdrop-blur-sm sm:gap-4 sm:rounded-3xl sm:p-12"
             >
               <CheckCircle2 className="h-12 w-12 text-primary sm:h-16 sm:w-16" />
               <h3 className="text-xl font-bold text-foreground sm:text-2xl">Message Sent! 🎉</h3>
@@ -85,21 +97,20 @@ export function ContactSection() {
           ) : (
             <form
               onSubmit={handleSubmit}
-              className="group relative rounded-2xl bg-slate-950/95 p-6 shadow-[0_0_60px_rgba(34,211,238,0.15)] ring-1 ring-cyan-400/20 sm:rounded-3xl sm:p-8 lg:p-10"
+              className="group relative rounded-2xl border border-border/60 bg-card/80 p-6 shadow-[0_0_50px_oklch(0.55_0.18_155/0.1)] backdrop-blur-sm sm:rounded-3xl sm:p-8 lg:p-10"
             >
-              <div className="absolute -inset-0.5 -z-10 rounded-2xl bg-gradient-to-r from-primary to-[oklch(0.6_0.15_140)] opacity-20 blur transition duration-500 group-hover:opacity-40 sm:rounded-3xl" />
+              {/* Glow border on hover */}
+              <div className="pointer-events-none absolute -inset-px -z-10 rounded-2xl bg-gradient-to-r from-primary/30 via-primary/10 to-primary/30 opacity-0 blur-sm transition duration-500 group-hover:opacity-100 sm:rounded-3xl" />
 
-              <div className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-6">
+              <div className="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-6">
+                {/* Name */}
                 <div className="sm:col-span-2">
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-semibold leading-6 text-foreground"
-                  >
+                  <label htmlFor="name" className="block text-sm font-semibold text-foreground">
                     Name <span className="text-primary">*</span>
                   </label>
                   <div className="relative mt-2">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                      <User className="h-4 w-4 text-muted-foreground sm:h-5 sm:w-5" />
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5">
+                      <User className="h-4 w-4 text-muted-foreground" />
                     </div>
                     <input
                       type="text"
@@ -109,22 +120,20 @@ export function ContactSection() {
                       value={form.name}
                       onChange={handleChange}
                       autoComplete="name"
-                      className="block w-full rounded-md border-0 bg-white/95 py-2 pl-9 pr-3 text-sm text-slate-950 shadow-sm ring-1 ring-inset ring-slate-300 transition-all placeholder:text-muted-foreground focus:bg-white focus:text-slate-950 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:pl-10 sm:pr-3.5 sm:text-sm sm:leading-6"
+                      className={inputClass}
                       placeholder="Vashishtha"
                     />
                   </div>
                 </div>
 
-                <div className="sm:col-span-1">
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-semibold leading-6 text-foreground"
-                  >
+                {/* Email */}
+                <div>
+                  <label htmlFor="email" className="block text-sm font-semibold text-foreground">
                     Email
                   </label>
                   <div className="relative mt-2">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                      <Mail className="h-4 w-4 text-muted-foreground sm:h-5 sm:w-5" />
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5">
+                      <Mail className="h-4 w-4 text-muted-foreground" />
                     </div>
                     <input
                       type="email"
@@ -133,22 +142,20 @@ export function ContactSection() {
                       value={form.email}
                       onChange={handleChange}
                       autoComplete="email"
-                      className="block w-full rounded-md border-0 bg-white/95 py-2 pl-9 pr-3 text-sm text-slate-950 shadow-sm ring-1 ring-inset ring-slate-300 transition-all placeholder:text-muted-foreground focus:bg-white focus:text-slate-950 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:pl-10 sm:pr-3.5 sm:text-sm sm:leading-6"
+                      className={inputClass}
                       placeholder="vashishtha@example.com"
                     />
                   </div>
                 </div>
 
-                <div className="sm:col-span-1">
-                  <label
-                    htmlFor="phone"
-                    className="block text-sm font-semibold leading-6 text-foreground"
-                  >
+                {/* Phone */}
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-semibold text-foreground">
                     Phone <span className="text-primary">*</span>
                   </label>
                   <div className="relative mt-2">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                      <Phone className="h-4 w-4 text-muted-foreground sm:h-5 sm:w-5" />
+                    <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5">
+                      <Phone className="h-4 w-4 text-muted-foreground" />
                     </div>
                     <input
                       type="tel"
@@ -158,22 +165,20 @@ export function ContactSection() {
                       value={form.phone}
                       onChange={handleChange}
                       autoComplete="tel"
-                      className="block w-full rounded-md border-0 bg-white/95 py-2 pl-9 pr-3 text-sm text-slate-950 shadow-sm ring-1 ring-inset ring-slate-300 transition-all placeholder:text-muted-foreground focus:bg-white focus:text-slate-950 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:pl-10 sm:pr-3.5 sm:text-sm sm:leading-6"
+                      className={inputClass}
                       placeholder="+91 80051-50056"
                     />
                   </div>
                 </div>
 
+                {/* Message */}
                 <div className="sm:col-span-2">
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-semibold leading-6 text-foreground"
-                  >
+                  <label htmlFor="message" className="block text-sm font-semibold text-foreground">
                     Message
                   </label>
                   <div className="relative mt-2">
-                    <div className="pointer-events-none absolute left-3 top-3 flex items-start">
-                      <MessageSquare className="h-4 w-4 text-muted-foreground sm:h-5 sm:w-5" />
+                    <div className="pointer-events-none absolute left-3.5 top-3">
+                      <MessageSquare className="h-4 w-4 text-muted-foreground" />
                     </div>
                     <textarea
                       name="message"
@@ -181,7 +186,7 @@ export function ContactSection() {
                       rows={4}
                       value={form.message}
                       onChange={handleChange}
-                      className="block w-full rounded-md border-0 bg-white/95 py-2 pl-9 pr-3 text-sm text-slate-950 shadow-sm ring-1 ring-inset ring-slate-300 transition-all placeholder:text-muted-foreground focus:bg-white focus:text-slate-950 focus:ring-2 focus:ring-inset focus:ring-cyan-400 sm:pl-10 sm:pr-3.5 sm:text-sm sm:leading-6"
+                      className={`${inputClass} resize-none pt-2.5`}
                       placeholder="Tell us about your project..."
                     />
                   </div>
@@ -190,10 +195,10 @@ export function ContactSection() {
 
               <div className="mt-6 sm:mt-8">
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
                   type="submit"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-center text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 sm:px-8 sm:py-3.5"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-[0_0_30px_oklch(0.55_0.18_155/0.3)] transition-all hover:shadow-[0_0_50px_oklch(0.55_0.18_155/0.5)] sm:px-8 sm:py-4"
                 >
                   Send via WhatsApp
                   <Send className="h-4 w-4" />
