@@ -7,6 +7,7 @@ import { StatsSection } from "@/components/StatsSection";
 import { ServicesSection } from "@/components/ServicesSection";
 import { ExpertiseSection } from "@/components/ExpertiseSection";
 import { HowItWorksSection } from "@/components/HowItWorksSection";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { CTASection } from "@/components/CTASection";
 import { ContactSection } from "@/components/ContactSection";
 import { FooterSection } from "@/components/FooterSection";
@@ -29,9 +30,7 @@ export default function HomePage() {
     <>
       <CustomCursor />
 
-      {showSplash && (
-        <SplashScreen onComplete={() => setShowSplash(false)} />
-      )}
+      {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
 
       <div
         className={`min-h-screen bg-background text-foreground transition-opacity duration-500 ${
@@ -44,6 +43,7 @@ export default function HomePage() {
         <ServicesSection />
         <ExpertiseSection />
         <HowItWorksSection />
+        <TestimonialsSection />
         <CTASection />
         <ContactSection />
         <FooterSection />
