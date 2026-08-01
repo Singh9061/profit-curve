@@ -13,6 +13,7 @@ import { ContactSection } from "@/components/ContactSection";
 import { FooterSection } from "@/components/FooterSection";
 import { SplashScreen } from "@/components/SplashScreen";
 import { CustomCursor } from "@/components/CustomCursor";
+import { LoadingSkeleton } from "@/components/LoadingSkeleton";
 
 export default function HomePage() {
   const [mounted, setMounted] = useState(false);
@@ -23,7 +24,7 @@ export default function HomePage() {
   }, []);
 
   if (!mounted) {
-    return <div className="min-h-screen bg-background" />;
+    return <LoadingSkeleton />;
   }
 
   return (
