@@ -20,7 +20,6 @@ export function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
 
-      // Active section detection
       const sections = navLinks.map((l) => l.to.slice(1));
       let current = "";
       for (const id of sections) {
@@ -98,7 +97,7 @@ export function Navbar() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <a
-            href="https://wa.me/918005150056"
+            href="https://wa.me/917651876854"
             target="_blank"
             rel="noopener noreferrer"
             className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform hover:scale-110"
@@ -109,7 +108,7 @@ export function Navbar() {
             </svg>
           </a>
           <a
-            href="https://www.instagram.com/the_raebarelian?igsh=bHBpaTd4eWt4NmNs"
+            href="https://www.instagram.com/theprofitcurve"
             target="_blank"
             rel="noopener noreferrer"
             className="flex h-10 w-10 items-center justify-center rounded-full bg-foreground/10 text-foreground transition-transform hover:scale-110"
@@ -165,7 +164,7 @@ export function Navbar() {
               ))}
               <div className="flex flex-col gap-3 pt-2">
                 <a
-                  href="https://wa.me/918005150056"
+                  href="https://wa.me/917651876854"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm font-medium text-primary"
@@ -173,7 +172,7 @@ export function Navbar() {
                   Chat on WhatsApp
                 </a>
                 <a
-                  href="https://www.instagram.com/the_raebarelian?igsh=bHBpaTd4eWt4NmNs"
+                  href="https://www.instagram.com/theprofitcurve"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm font-medium text-primary"
@@ -181,7 +180,7 @@ export function Navbar() {
                   Instagram
                 </a>
                 <a
-                  href="tel:+918005150056"
+                  href="tel:+917651876854"
                   className="flex items-center gap-2 text-sm font-medium text-primary"
                 >
                   <Phone className="h-4 w-4" />
