@@ -102,7 +102,7 @@ export function FooterSection() {
                 <Phone className="h-3.5 w-3.5 text-primary sm:h-4 sm:w-4" />
               </div>
               <span className="text-xs transition-colors group-hover:text-foreground sm:text-sm">
-                +91 80051-50056
+                +91 76518-76854
               </span>
             </li>
             <li className="group flex items-start gap-3 text-sm text-muted-foreground sm:gap-4">
