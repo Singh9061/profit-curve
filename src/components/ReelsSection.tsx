@@ -7,26 +7,29 @@ import { Instagram, Volume2, VolumeX, ExternalLink } from "lucide-react";
 /**
  * Add your reel videos here.
  * Put .mp4 files in /public/reels/ then set src like "/reels/reel1.mp4"
- * Or use any direct video URL.
+ * Recommended mapping from your videos:
+ * - Video-47220.mp4 (bench intro) → reel1.mp4
+ * - Video-31205.mp4 (full services) → reel2.mp4
+ * - Video-30387.mp4 (testimonial) → reel3.mp4
  */
 const reels = [
   {
     id: 1,
-    src: "", // e.g. "/reels/reel1.mp4"
-    title: "Growth Tips",
-    caption: "How we scale local brands",
+    src: "", // /reels/reel1.mp4
+    title: "Digital Marketing Agency",
+    caption: "Hello Raebarelians — The Profit Curve is here",
   },
   {
     id: 2,
-    src: "",
-    title: "Behind the Scenes",
-    caption: "Team at work",
+    src: "", // /reels/reel2.mp4
+    title: "Turning Media into Profit",
+    caption: "SEO • Social Media • Websites for local businesses",
   },
   {
     id: 3,
-    src: "",
+    src: "", // /reels/reel3.mp4
     title: "Client Results",
-    caption: "Real wins, real numbers",
+    caption: "Real growth stories from Raebareli",
   },
 ];
 
@@ -48,7 +51,6 @@ function IPhoneFrame({
       className="relative mx-auto"
       style={{ width: 260, height: 520 }}
     >
-      {/* Phone outer shell */}
       <div
         className="absolute inset-0 rounded-[2.5rem] p-[3px]"
         style={{
@@ -58,18 +60,14 @@ function IPhoneFrame({
             "0 25px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 0 rgba(255,255,255,0.1)",
         }}
       >
-        {/* Inner bezel */}
         <div className="relative h-full w-full overflow-hidden rounded-[2.3rem] bg-black">
-          {/* Dynamic Island */}
           <div className="absolute left-1/2 top-3 z-30 h-[22px] w-[90px] -translate-x-1/2 rounded-full bg-black" />
 
-          {/* Side buttons (visual) */}
           <div className="absolute -left-[3px] top-24 h-8 w-[3px] rounded-l-sm bg-[#2c2c2e]" />
           <div className="absolute -left-[3px] top-36 h-12 w-[3px] rounded-l-sm bg-[#2c2c2e]" />
           <div className="absolute -left-[3px] top-52 h-12 w-[3px] rounded-l-sm bg-[#2c2c2e]" />
           <div className="absolute -right-[3px] top-40 h-16 w-[3px] rounded-r-sm bg-[#2c2c2e]" />
 
-          {/* Screen content */}
           <div className="absolute inset-[2px] overflow-hidden rounded-[2.15rem]">
             {children}
           </div>
@@ -110,13 +108,11 @@ function ReelPhone({ reel, index }: { reel: (typeof reels)[number]; index: numbe
             onError={() => setHasVideo(false)}
           />
 
-          {/* Instagram-style overlay */}
           <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent px-4 pb-8 pt-16">
             <p className="text-sm font-bold text-white">{reel.title}</p>
             <p className="mt-0.5 text-xs text-white/70">{reel.caption}</p>
           </div>
 
-          {/* Mute button */}
           <button
             onClick={toggleMute}
             className="absolute bottom-8 right-3 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm"
@@ -125,21 +121,18 @@ function ReelPhone({ reel, index }: { reel: (typeof reels)[number]; index: numbe
             {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
           </button>
 
-          {/* Top IG badge */}
           <div className="absolute left-3 top-10 z-20 flex items-center gap-1.5 rounded-full bg-black/40 px-2.5 py-1 backdrop-blur-sm">
             <Instagram className="h-3.5 w-3.5 text-white" />
             <span className="text-[10px] font-semibold text-white">@theprofitcurve</span>
           </div>
         </div>
       ) : (
-        /* Placeholder — links to Instagram when no video uploaded */
         <a
           href={IG_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden"
         >
-          {/* Animated gradient background like a reel */}
           <motion.div
             className="absolute inset-0"
             animate={{
@@ -152,7 +145,6 @@ function ReelPhone({ reel, index }: { reel: (typeof reels)[number]; index: numbe
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           />
 
-          {/* Floating particles */}
           {[...Array(6)].map((_, i) => (
             <motion.div
               key={i}
@@ -182,7 +174,6 @@ function ReelPhone({ reel, index }: { reel: (typeof reels)[number]; index: numbe
             </span>
           </div>
 
-          {/* Progress bar fake */}
           <div className="absolute left-3 right-3 top-10 flex gap-1">
             {[0, 1, 2].map((i) => (
               <div key={i} className="h-[2px] flex-1 overflow-hidden rounded-full bg-white/20">
@@ -234,14 +225,12 @@ export function ReelsSection() {
           </p>
         </motion.div>
 
-        {/* iPhone reels row */}
         <div className="mt-12 flex flex-wrap items-start justify-center gap-8 sm:mt-16 sm:gap-10 lg:gap-12">
           {reels.map((reel, i) => (
             <ReelPhone key={reel.id} reel={reel} index={i} />
           ))}
         </div>
 
-        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
