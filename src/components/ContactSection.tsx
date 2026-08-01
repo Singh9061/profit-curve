@@ -28,7 +28,7 @@ export function ContactSection() {
       .filter(Boolean)
       .join("\n");
 
-    const waUrl = `https://wa.me/918005150056?text=${encodeURIComponent(text)}`;
+    const waUrl = `https://wa.me/917651876854?text=${encodeURIComponent(text)}`;
     window.open(waUrl, "_blank");
     setSubmitted(true);
   };
@@ -61,7 +61,7 @@ export function ContactSection() {
             Get in Touch
           </h2>
           <p className="mt-3 text-sm leading-7 text-muted-foreground sm:mt-4 sm:text-base lg:text-lg">
-            Ready to supercharge your business? Fill out the form and we&apos;ll reply on WhatsApp
+            Ready to supercharge your business? Fill out the form and we'll reply on WhatsApp
             instantly.
           </p>
         </motion.div>
@@ -99,11 +99,9 @@ export function ContactSection() {
               onSubmit={handleSubmit}
               className="group relative rounded-2xl border border-border/60 bg-card/80 p-6 shadow-[0_0_50px_oklch(0.55_0.18_155/0.1)] backdrop-blur-sm sm:rounded-3xl sm:p-8 lg:p-10"
             >
-              {/* Glow border on hover */}
               <div className="pointer-events-none absolute -inset-px -z-10 rounded-2xl bg-gradient-to-r from-primary/30 via-primary/10 to-primary/30 opacity-0 blur-sm transition duration-500 group-hover:opacity-100 sm:rounded-3xl" />
 
               <div className="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-6">
-                {/* Name */}
                 <div className="sm:col-span-2">
                   <label htmlFor="name" className="block text-sm font-semibold text-foreground">
                     Name <span className="text-primary">*</span>
@@ -126,7 +124,6 @@ export function ContactSection() {
                   </div>
                 </div>
 
-                {/* Email */}
                 <div>
                   <label htmlFor="email" className="block text-sm font-semibold text-foreground">
                     Email
@@ -148,7 +145,6 @@ export function ContactSection() {
                   </div>
                 </div>
 
-                {/* Phone */}
                 <div>
                   <label htmlFor="phone" className="block text-sm font-semibold text-foreground">
                     Phone <span className="text-primary">*</span>
@@ -166,12 +162,11 @@ export function ContactSection() {
                       onChange={handleChange}
                       autoComplete="tel"
                       className={inputClass}
-                      placeholder="+91 80051-50056"
+                      placeholder="+91 76518-76854"
                     />
                   </div>
                 </div>
 
-                {/* Message */}
                 <div className="sm:col-span-2">
                   <label htmlFor="message" className="block text-sm font-semibold text-foreground">
                     Message
