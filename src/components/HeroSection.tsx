@@ -164,7 +164,7 @@ export function HeroSection() {
           className="mt-8 flex flex-col items-center justify-center gap-3 sm:mt-11 sm:flex-row sm:gap-5"
         >
           <a
-            href="https://wa.me/918005150056"
+            href="https://wa.me/917651876854"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative inline-flex w-full items-center justify-center gap-2.5 overflow-hidden rounded-full px-8 py-4 text-base font-semibold text-primary-foreground sm:w-auto"
