@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface SplashScreenProps {
@@ -8,111 +8,56 @@ interface SplashScreenProps {
 }
 
 export function SplashScreen({ onComplete }: SplashScreenProps) {
-  const [progress, setProgress] = useState(0);
-  const [isExiting, setIsExiting] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    // Progress animation
-    const duration = 2500; // 2.5 seconds
-    const interval = 30;
-    const steps = duration / interval;
-    let currentStep = 0;
+    // Total ~1.2s then exit
+    const timer = setTimeout(() => {
+      setVisible(false);
+    }, 1200);
 
-    const timer = setInterval(() => {
-      currentStep += 1;
-      const newProgress = Math.min((currentStep / steps) * 100, 100);
-      setProgress(newProgress);
-
-      if (currentStep >= steps) {
-        clearInterval(timer);
-        setIsExiting(true);
-        // Wait for exit animation then call onComplete
-        setTimeout(() => {
-          onComplete();
-        }, 600);
-      }
-    }, interval);
-
-    return () => clearInterval(timer);
-  }, [onComplete]);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <AnimatePresence>
-      {!isExiting && (
+    <AnimatePresence
+      onExitComplete={onComplete}
+    >
+      {visible && (
         <motion.div
+          key="splash"
           initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
-            scale: 1.05,
-            transition: { duration: 0.6, ease: "easeInOut" },
+            transition: { duration: 0.35, ease: "easeInOut" },
           }}
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden"
-          style={{
-            background:
-              "linear-gradient(135deg, oklch(0.11 0.03 155) 0%, oklch(0.15 0.04 155) 40%, oklch(0.12 0.025 160) 100%)",
-          }}
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background"
         >
-          {/* Soft ambient orbs */}
-          <div className="pointer-events-none absolute inset-0">
-            <motion.div
-              animate={{
-                scale: [1, 1.15, 1],
-                opacity: [0.15, 0.25, 0.15],
-              }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute left-1/2 top-1/3 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 blur-[100px] sm:h-80 sm:w-80"
-            />
-            <motion.div
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.08, 0.15, 0.08],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 1,
-              }}
-              className="absolute bottom-1/4 right-1/4 h-48 w-48 rounded-full bg-primary/10 blur-[80px]"
-            />
-          </div>
+          {/* Soft single glow — no heavy looping orbs */}
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/15 blur-[80px]" />
 
-          {/* Glass card container */}
-          <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="relative z-10 flex flex-col items-center px-6 text-center"
-          >
-            {/* Logo */}
+          <div className="relative z-10 flex flex-col items-center px-6 text-center">
+            {/* Logo — quick scale in */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.6 }}
+              initial={{ opacity: 0, scale: 0.7 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.15,
-                type: "spring",
-                stiffness: 120,
-              }}
-              className="relative mb-6"
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="mb-5"
             >
-              <div className="absolute inset-0 rounded-2xl bg-primary/30 blur-xl" />
               <img
                 src="/images/logo.jpeg"
-                alt="Profit Curve Logo"
-                className="relative h-20 w-20 rounded-2xl object-cover shadow-2xl ring-2 ring-primary/40 sm:h-24 sm:w-24"
+                alt="Profit Curve"
+                className="h-16 w-16 rounded-2xl object-cover shadow-lg ring-2 ring-primary/30 sm:h-20 sm:w-20"
               />
             </motion.div>
 
-            {/* Brand Name */}
+            {/* Brand name */}
             <motion.h1
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-              className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl"
-              style={{
-                fontFamily: "'Fredoka', 'Baloo 2', cursive, sans-serif",
-              }}
+              transition={{ duration: 0.4, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="text-2xl font-bold tracking-tight sm:text-3xl"
+              style={{ fontFamily: "'Fredoka', 'Baloo 2', cursive, sans-serif" }}
             >
               <span className="bg-gradient-to-r from-primary via-[oklch(0.65_0.16_145)] to-[oklch(0.55_0.18_160)] bg-clip-text text-transparent">
                 Profit Curve
@@ -121,70 +66,29 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
 
             {/* Tagline */}
             <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="mt-3 max-w-xs text-sm text-muted-foreground sm:text-base"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.35, delay: 0.3 }}
+              className="mt-2 text-sm text-muted-foreground"
             >
               Turning Media Into Profit
             </motion.p>
 
-            {/* Progress bar */}
+            {/* Slim progress bar — fills once, no dots */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.7 }}
-              className="mt-10 w-48 sm:w-56"
+              transition={{ delay: 0.4 }}
+              className="mt-8 w-36 overflow-hidden rounded-full bg-foreground/10 sm:w-44"
             >
-              <div className="h-1 overflow-hidden rounded-full bg-foreground/10">
-                <motion.div
-                  className="h-full rounded-full bg-gradient-to-r from-primary to-[oklch(0.6_0.16_145)]"
-                  style={{ width: `${progress}%` }}
-                  transition={{ duration: 0.1 }}
-                />
-              </div>
-              <p className="mt-3 text-xs text-muted-foreground/70">
-                Loading experience...
-              </p>
+              <motion.div
+                initial={{ width: "0%" }}
+                animate={{ width: "100%" }}
+                transition={{ duration: 0.7, delay: 0.45, ease: "easeInOut" }}
+                className="h-0.5 rounded-full bg-primary"
+              />
             </motion.div>
-
-            {/* Animated dots */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.9 }}
-              className="mt-6 flex items-center gap-1.5"
-            >
-              {[0, 1, 2].map((i) => (
-                <motion.div
-                  key={i}
-                  animate={{
-                    scale: [1, 1.4, 1],
-                    opacity: [0.4, 1, 0.4],
-                  }}
-                  transition={{
-                    duration: 0.9,
-                    repeat: Infinity,
-                    delay: i * 0.2,
-                    ease: "easeInOut",
-                  }}
-                  className="h-1.5 w-1.5 rounded-full bg-primary"
-                />
-              ))}
-            </motion.div>
-          </motion.div>
-
-          {/* Footer */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1 }}
-            className="absolute bottom-8 left-0 right-0 text-center"
-          >
-            <p className="text-xs text-muted-foreground/50">
-              © 2026 Profit Curve · All rights reserved
-            </p>
-          </motion.div>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
