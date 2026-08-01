@@ -6,25 +6,68 @@ import { ArrowRight } from "lucide-react";
 import { NetworkBackground } from "./NetworkBackground";
 import { ScrollIndicator } from "./ScrollIndicator";
 
-function AnimatedWord({ text, delayStart = 0 }: { text: string; delayStart?: number }) {
+/* ─── Letter-by-letter reveal ─────────────────────────────────────────────── */
+function LetterReveal({
+  text,
+  delayStart = 0,
+  className = "",
+}: {
+  text: string;
+  delayStart?: number;
+  className?: string;
+}) {
   return (
-    <>
+    <span className={className}>
       {text.split("").map((char, i) => (
         <motion.span
-          key={i}
-          initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          key={`${text}-${i}`}
+          initial={{ opacity: 0, y: 50, rotateX: 90, filter: "blur(10px)" }}
+          animate={{ opacity: 1, y: 0, rotateX: 0, filter: "blur(0px)" }}
           transition={{
-            duration: 0.7,
-            delay: delayStart + i * 0.04,
+            duration: 0.55,
+            delay: delayStart + i * 0.035,
             ease: [0.22, 1, 0.36, 1],
           }}
           className="inline-block"
+          style={{ transformOrigin: "center bottom" }}
         >
           {char === " " ? "\u00A0" : char}
         </motion.span>
       ))}
-    </>
+    </span>
+  );
+}
+
+/* ─── Word-by-word reveal (for shorter lines) ─────────────────────────────── */
+function WordReveal({
+  text,
+  delayStart = 0,
+  className = "",
+}: {
+  text: string;
+  delayStart?: number;
+  className?: string;
+}) {
+  const words = text.split(" ");
+  return (
+    <span className={className}>
+      {words.map((word, i) => (
+        <motion.span
+          key={`${word}-${i}`}
+          initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{
+            duration: 0.6,
+            delay: delayStart + i * 0.12,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="inline-block"
+        >
+          {word}
+          {i < words.length - 1 ? "\u00A0" : ""}
+        </motion.span>
+      ))}
+    </span>
   );
 }
 
@@ -37,17 +80,16 @@ export function HeroSection() {
     offset: ["start start", "end start"],
   });
 
-  // Parallax: content moves slower than scroll
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 180]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
 
   return (
     <section
       ref={ref}
       className="relative flex h-[100svh] min-h-[100svh] items-center justify-center overflow-hidden"
     >
-      {/* Parallax background layer */}
+      {/* Parallax background */}
       <motion.div className="pointer-events-none absolute inset-0" style={{ scale: bgScale }}>
         <div
           className="absolute inset-0"
@@ -66,42 +108,60 @@ export function HeroSection() {
         />
       </motion.div>
 
-      {/* Content with parallax fade */}
+      {/* Content */}
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
         className="relative z-10 mx-auto w-full max-w-5xl px-4 text-center sm:px-6"
       >
-        {/* Large bold headline */}
+        {/* ── Line 1: Turning Media into Profit ── */}
         <h1
-          className="text-[2.5rem] font-extrabold leading-[1.1] tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
-          style={{ fontFamily: "'Fredoka', 'Baloo 2', cursive, sans-serif" }}
+          className="text-[2.4rem] font-extrabold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem]"
+          style={{
+            fontFamily: "'Fredoka', 'Baloo 2', cursive, sans-serif",
+            perspective: "900px",
+          }}
         >
-          <span className="bg-gradient-to-r from-primary via-[oklch(0.65_0.16_145)] to-[oklch(0.55_0.18_160)] bg-clip-text text-transparent">
-            <AnimatedWord text="Turning" delayStart={0.1} />
-          </span>{" "}
-          <AnimatedWord text="Media" delayStart={0.35} />{" "}
-          <br className="hidden sm:block" />
-          <AnimatedWord text="into" delayStart={0.55} />{" "}
-          <span className="bg-gradient-to-r from-primary via-[oklch(0.65_0.16_145)] to-[oklch(0.55_0.18_160)] bg-clip-text text-transparent">
-            <AnimatedWord text="Profit" delayStart={0.7} />
-          </span>
+          <LetterReveal
+            text="Turning"
+            delayStart={0.15}
+            className="bg-gradient-to-r from-primary via-[oklch(0.65_0.16_145)] to-[oklch(0.55_0.18_160)] bg-clip-text text-transparent"
+          />{" "}
+          <LetterReveal text="Media" delayStart={0.45} className="text-foreground" />{" "}
+          <LetterReveal text="into" delayStart={0.7} className="text-foreground" />{" "}
+          <LetterReveal
+            text="Profit"
+            delayStart={0.9}
+            className="bg-gradient-to-r from-primary via-[oklch(0.65_0.16_145)] to-[oklch(0.55_0.18_160)] bg-clip-text text-transparent"
+          />
         </h1>
 
+        {/* ── Line 2: Supercharge Your Business ── */}
+        <h2
+          className="mt-3 text-xl font-semibold tracking-tight text-foreground/90 sm:mt-5 sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
+          style={{
+            fontFamily: "'Fredoka', 'Baloo 2', cursive, sans-serif",
+            perspective: "900px",
+          }}
+        >
+          <WordReveal text="Supercharge Your Business" delayStart={1.35} />
+        </h2>
+
+        {/* Subtitle */}
         <motion.p
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.0, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto mt-6 max-w-xl text-base text-muted-foreground sm:mt-8 sm:text-lg md:text-xl"
+          transition={{ duration: 0.7, delay: 1.85, ease: [0.22, 1, 0.36, 1] }}
+          className="mx-auto mt-5 max-w-xl text-base text-muted-foreground sm:mt-7 sm:text-lg md:text-xl"
         >
           Automate workflows. Reduce costs. Scale faster — with solutions that work 24/7.
         </motion.p>
 
-        {/* Strong CTAs */}
+        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-8 flex flex-col items-center justify-center gap-3 sm:mt-12 sm:flex-row sm:gap-5"
+          transition={{ duration: 0.7, delay: 2.1, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-8 flex flex-col items-center justify-center gap-3 sm:mt-11 sm:flex-row sm:gap-5"
         >
           <a
             href="https://wa.me/918005150056"
@@ -136,12 +196,12 @@ export function HeroSection() {
           </a>
         </motion.div>
 
-        {/* Trusted brands - minimal */}
+        {/* Trusted brands */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.5 }}
-          className="mt-14 sm:mt-20"
+          transition={{ duration: 1, delay: 2.5 }}
+          className="mt-14 sm:mt-18"
         >
           <p className="text-[11px] uppercase tracking-[0.25em] text-muted-foreground/50">
             Trusted by
