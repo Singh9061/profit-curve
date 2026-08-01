@@ -6,30 +6,38 @@ import { Instagram, Volume2, VolumeX, ExternalLink } from "lucide-react";
 
 /**
  * Add your reel videos here.
- * Put .mp4 files in /public/reels/ then set src like "/reels/reel1.mp4"
- * Recommended mapping from your videos:
- * - Video-47220.mp4 (bench intro) → reel1.mp4
- * - Video-31205.mp4 (full services) → reel2.mp4
- * - Video-30387.mp4 (testimonial) → reel3.mp4
+ * Put .mp4 files in /public/reels/ then set the src paths below.
+ *
+ * Recommended mapping:
+ * - Video-33824.mp4 (woman in red – Raebareli advertising) → reel1.mp4
+ * - Video-47220.mp4 (man on bench with laptop)            → reel2.mp4
+ * - Video-31205.mp4 (full services + website demo)         → reel3.mp4
+ * - Video-30387.mp4 (Uzma testimonial)                     → reel4.mp4
  */
 const reels = [
   {
     id: 1,
     src: "", // /reels/reel1.mp4
-    title: "Digital Marketing Agency",
-    caption: "Hello Raebarelians — The Profit Curve is here",
+    title: "Raebareli Businesses",
+    caption: "Mujhe pata hai aap Raebareli se hain...",
   },
   {
     id: 2,
     src: "", // /reels/reel2.mp4
-    title: "Turning Media into Profit",
-    caption: "SEO • Social Media • Websites for local businesses",
+    title: "Digital Marketing Agency",
+    caption: "Hello Raebarelians — The Profit Curve is here",
   },
   {
     id: 3,
     src: "", // /reels/reel3.mp4
-    title: "Client Results",
-    caption: "Real growth stories from Raebareli",
+    title: "Turning Media into Profit",
+    caption: "SEO • Social Media • Websites & more",
+  },
+  {
+    id: 4,
+    src: "", // /reels/reel4.mp4
+    title: "Real Client Results",
+    caption: "Uzma Home Baker – growth story",
   },
 ];
 
@@ -47,12 +55,12 @@ function IPhoneFrame({
       initial={{ opacity: 0, y: 50, scale: 0.9 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ delay: index * 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ delay: index * 0.12, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       className="relative mx-auto"
-      style={{ width: 260, height: 520 }}
+      style={{ width: 240, height: 480 }}
     >
       <div
-        className="absolute inset-0 rounded-[2.5rem] p-[3px]"
+        className="absolute inset-0 rounded-[2.4rem] p-[3px]"
         style={{
           background:
             "linear-gradient(145deg, #3a3a3c 0%, #1c1c1e 40%, #2c2c2e 100%)",
@@ -60,15 +68,17 @@ function IPhoneFrame({
             "0 25px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 0 rgba(255,255,255,0.1)",
         }}
       >
-        <div className="relative h-full w-full overflow-hidden rounded-[2.3rem] bg-black">
-          <div className="absolute left-1/2 top-3 z-30 h-[22px] w-[90px] -translate-x-1/2 rounded-full bg-black" />
+        <div className="relative h-full w-full overflow-hidden rounded-[2.2rem] bg-black">
+          {/* Dynamic Island */}
+          <div className="absolute left-1/2 top-2.5 z-30 h-[20px] w-[82px] -translate-x-1/2 rounded-full bg-black" />
 
-          <div className="absolute -left-[3px] top-24 h-8 w-[3px] rounded-l-sm bg-[#2c2c2e]" />
-          <div className="absolute -left-[3px] top-36 h-12 w-[3px] rounded-l-sm bg-[#2c2c2e]" />
-          <div className="absolute -left-[3px] top-52 h-12 w-[3px] rounded-l-sm bg-[#2c2c2e]" />
-          <div className="absolute -right-[3px] top-40 h-16 w-[3px] rounded-r-sm bg-[#2c2c2e]" />
+          {/* Side buttons */}
+          <div className="absolute -left-[3px] top-20 h-7 w-[3px] rounded-l-sm bg-[#2c2c2e]" />
+          <div className="absolute -left-[3px] top-32 h-10 w-[3px] rounded-l-sm bg-[#2c2c2e]" />
+          <div className="absolute -left-[3px] top-46 h-10 w-[3px] rounded-l-sm bg-[#2c2c2e]" />
+          <div className="absolute -right-[3px] top-36 h-14 w-[3px] rounded-r-sm bg-[#2c2c2e]" />
 
-          <div className="absolute inset-[2px] overflow-hidden rounded-[2.15rem]">
+          <div className="absolute inset-[2px] overflow-hidden rounded-[2.05rem]">
             {children}
           </div>
         </div>
@@ -108,22 +118,22 @@ function ReelPhone({ reel, index }: { reel: (typeof reels)[number]; index: numbe
             onError={() => setHasVideo(false)}
           />
 
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent px-4 pb-8 pt-16">
-            <p className="text-sm font-bold text-white">{reel.title}</p>
-            <p className="mt-0.5 text-xs text-white/70">{reel.caption}</p>
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent px-3 pb-7 pt-14">
+            <p className="text-[13px] font-bold text-white">{reel.title}</p>
+            <p className="mt-0.5 text-[11px] text-white/70">{reel.caption}</p>
           </div>
 
           <button
             onClick={toggleMute}
-            className="absolute bottom-8 right-3 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm"
+            className="absolute bottom-7 right-2.5 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm"
             aria-label={muted ? "Unmute" : "Mute"}
           >
-            {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+            {muted ? <VolumeX className="h-3.5 w-3.5" /> : <Volume2 className="h-3.5 w-3.5" />}
           </button>
 
-          <div className="absolute left-3 top-10 z-20 flex items-center gap-1.5 rounded-full bg-black/40 px-2.5 py-1 backdrop-blur-sm">
-            <Instagram className="h-3.5 w-3.5 text-white" />
-            <span className="text-[10px] font-semibold text-white">@theprofitcurve</span>
+          <div className="absolute left-2.5 top-9 z-20 flex items-center gap-1.5 rounded-full bg-black/40 px-2 py-0.5 backdrop-blur-sm">
+            <Instagram className="h-3 w-3 text-white" />
+            <span className="text-[9px] font-semibold text-white">@theprofitcurve</span>
           </div>
         </div>
       ) : (
@@ -145,15 +155,15 @@ function ReelPhone({ reel, index }: { reel: (typeof reels)[number]; index: numbe
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           />
 
-          {[...Array(6)].map((_, i) => (
+          {[...Array(5)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute h-1 w-1 rounded-full bg-primary/60"
               style={{
-                left: `${15 + i * 14}%`,
-                top: `${20 + (i % 3) * 25}%`,
+                left: `${18 + i * 15}%`,
+                top: `${22 + (i % 3) * 22}%`,
               }}
-              animate={{ y: [0, -20, 0], opacity: [0.3, 0.8, 0.3] }}
+              animate={{ y: [0, -18, 0], opacity: [0.3, 0.8, 0.3] }}
               transition={{
                 duration: 3 + i * 0.4,
                 repeat: Infinity,
@@ -162,22 +172,23 @@ function ReelPhone({ reel, index }: { reel: (typeof reels)[number]; index: numbe
             />
           ))}
 
-          <div className="relative z-10 flex flex-col items-center px-6 text-center">
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/20 ring-1 ring-primary/30">
-              <Instagram className="h-7 w-7 text-primary" />
+          <div className="relative z-10 flex flex-col items-center px-5 text-center">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/20 ring-1 ring-primary/30">
+              <Instagram className="h-6 w-6 text-primary" />
             </div>
-            <p className="mt-4 text-sm font-bold text-white">{reel.title}</p>
-            <p className="mt-1 text-xs text-white/50">{reel.caption}</p>
-            <span className="mt-5 inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-[11px] font-semibold text-primary">
+            <p className="mt-3 text-[13px] font-bold text-white">{reel.title}</p>
+            <p className="mt-1 text-[11px] text-white/50">{reel.caption}</p>
+            <span className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-[10px] font-semibold text-primary">
               Watch on Instagram
-              <ExternalLink className="h-3 w-3" />
+              <ExternalLink className="h-2.5 w-2.5" />
             </span>
           </div>
 
-          <div className="absolute left-3 right-3 top-10 flex gap-1">
-            {[0, 1, 2].map((i) => (
+          {/* Story progress bars */}
+          <div className="absolute left-2.5 right-2.5 top-9 flex gap-1">
+            {[0, 1, 2, 3].map((i) => (
               <div key={i} className="h-[2px] flex-1 overflow-hidden rounded-full bg-white/20">
-                {i === index % 3 && (
+                {i === index % 4 && (
                   <motion.div
                     className="h-full bg-white"
                     initial={{ width: "0%" }}
@@ -221,11 +232,12 @@ export function ReelsSection() {
             </span>
           </h2>
           <p className="mx-auto mt-3 max-w-md text-sm text-muted-foreground sm:mt-4 sm:text-base">
-            Tips, results & behind the scenes — straight from our Instagram.
+            Real stories from Raebareli — tips, results & behind the scenes.
           </p>
         </motion.div>
 
-        <div className="mt-12 flex flex-wrap items-start justify-center gap-8 sm:mt-16 sm:gap-10 lg:gap-12">
+        {/* iPhone reels – 4 phones in a responsive row */}
+        <div className="mt-12 flex flex-wrap items-start justify-center gap-6 sm:mt-16 sm:gap-8 lg:gap-10">
           {reels.map((reel, i) => (
             <ReelPhone key={reel.id} reel={reel} index={i} />
           ))}
