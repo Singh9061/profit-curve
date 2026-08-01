@@ -34,7 +34,7 @@ export default function HomePage() {
       {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
 
       <div
-        className={`min-h-screen bg-background text-foreground transition-opacity duration-500 ${
+        className={`min-h-screen bg-background text-foreground transition-opacity duration-700 ${
           showSplash ? "opacity-0" : "opacity-100"
         }`}
       >
