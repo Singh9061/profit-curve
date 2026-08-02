@@ -4,19 +4,19 @@ import { motion } from "framer-motion";
 
 const testimonials = [
   {
-    name: "Rahul Sharma",
+    name: "Harshit",
     role: "Owner, Kidikart",
     text: "Profit Curve transformed our online presence. Leads increased by 3x within 2 months. Highly recommended!",
     rating: 5,
   },
   {
-    name: "Priya Verma",
+    name: "Shivam Jaiswal",
     role: "Founder, Saubhagyam",
     text: "Their SEO and social media work is top-notch. Professional team and great results.",
     rating: 5,
   },
   {
-    name: "Amit Singh",
+    name: "Raghvendra Singh Rathore",
     role: "Director, Amritsari Haveli",
     text: "From website to Google Business — everything was handled perfectly. Our local visibility skyrocketed.",
     rating: 5,
@@ -28,7 +28,7 @@ const testimonials = [
     rating: 5,
   },
   {
-    name: "Vikram Patel",
+    name: "Ashutosh Yadav",
     role: "Owner, New Naresh",
     text: "Clean design, fast delivery, and continuous support. Profit Curve is our go-to digital partner.",
     rating: 5,
