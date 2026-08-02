@@ -1,6 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Allow local dev hostnames (used by codespaces/ports preview)
+  // to access Next.js dev resources like webpack HMR.
+  // See https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+  // and restart the dev server after changing this.
+  // Include both '127.0.0.1' and 'localhost' where applicable.
+  // Note: Type may not include allowedDevOrigins depending on Next types — it's accepted at runtime.
+  // @ts-ignore-next-line
+  allowedDevOrigins: ['127.0.0.1', 'localhost'],
   images: {
     remotePatterns: [
       {
