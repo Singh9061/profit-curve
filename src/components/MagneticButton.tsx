@@ -27,7 +27,7 @@ export function MagneticButton({
   rel,
   type,
 }: MagneticButtonProps) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement | null>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const handleMouse = (e: React.MouseEvent) => {
@@ -42,7 +42,6 @@ export function MagneticButton({
   const reset = () => setPosition({ x: 0, y: 0 });
 
   const motionProps = {
-    ref,
     onMouseMove: handleMouse,
     onMouseLeave: reset,
     animate: { x: position.x, y: position.y },
@@ -53,7 +52,7 @@ export function MagneticButton({
 
   if (as === "a" && href) {
     return (
-      <motion.a href={href} target={target} rel={rel} {...motionProps}>
+      <motion.a href={href} target={target} rel={rel} ref={ref as React.Ref<HTMLAnchorElement>} {...motionProps}>
         {children}
       </motion.a>
     );
@@ -61,11 +60,11 @@ export function MagneticButton({
 
   if (as === "button") {
     return (
-      <motion.button type={type || "button"} {...motionProps}>
+      <motion.button type={type || "button"} ref={ref as React.Ref<HTMLButtonElement>} {...motionProps}>
         {children}
       </motion.button>
     );
   }
 
-  return <motion.div {...motionProps}>{children}</motion.div>;
+  return <motion.div ref={ref as React.Ref<HTMLDivElement>} {...motionProps}>{children}</motion.div>;
 }

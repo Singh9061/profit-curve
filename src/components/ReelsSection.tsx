@@ -17,25 +17,25 @@ import { Instagram, Volume2, VolumeX, ExternalLink } from "lucide-react";
 const reels = [
   {
     id: 1,
-    src: "", // /reels/reel1.mp4
+    src: "/reels/reel1.mp4",
     title: "Raebareli Businesses",
     caption: "Mujhe pata hai aap Raebareli se hain...",
   },
   {
     id: 2,
-    src: "", // /reels/reel2.mp4
+    src: "/reels/reel2.mp4",
     title: "Digital Marketing Agency",
     caption: "Hello Raebarelians — The Profit Curve is here",
   },
   {
     id: 3,
-    src: "", // /reels/reel3.mp4
+    src: "/reels/reel3.mp4",
     title: "Turning Media into Profit",
     caption: "SEO • Social Media • Websites & more",
   },
   {
     id: 4,
-    src: "", // /reels/reel4.mp4
+    src: "/reels/reel4.mp4",
     title: "Real Client Results",
     caption: "Uzma Home Baker – growth story",
   },
